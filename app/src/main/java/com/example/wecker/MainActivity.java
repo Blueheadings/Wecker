@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
-    private TextView textView;
+    public static TextView textView;
     private NotificationHelper notificationHelper;
 
     @Override
@@ -36,9 +36,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView);
-
         notificationHelper = new NotificationHelper(this);
-
         Button btn_timePicker = findViewById(R.id.btn_timpicker);
 
         btn_timePicker.setOnClickListener(new View.OnClickListener() {
@@ -70,39 +68,32 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         startAlarm(c);
     }
 
-    private void updateTimeText(Calendar c){
+    public static void updateTimeText(Calendar c){
         String timeText = "Alarm set for: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         textView.setText(timeText);
     }
 
-//RingtoneHelper ringtoneHelper = new RingtoneHelper(this);
-
-    private void startAlarm(Calendar c){
+    public void startAlarm(Calendar c){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
 
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
 /*
+        // Wecker der in der Vergangengheit liegt (nächster Tag) wird sonst direkt abgespielt
         if(c.before(Calendar.getInstance())){
             c.add(Calendar.DATE, 1);
         }
 
  */
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-//            r.play();
-//            ringtoneHelper.playRingtone();
-//            RingtoneHelper ringtoneHelper = new RingtoneHelper(this);
-//            ringtoneHelper.playRingtone();
         }
     }
 
-    private void cancelAlarm(){
+    public void cancelAlarm(){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
@@ -110,9 +101,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         alarmManager.cancel(pendingIntent);
         textView.setText("Alarm canceled");
 
-//        RingtoneHelper ringtoneHelper = new RingtoneHelper(this);
-//        ringtoneHelper.stopRingtone();
-
+        AlertReceiver.r.stop();
     }
 
 
