@@ -5,31 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".PreferenceActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Alarm Set"
-        android:textSize="30sp"/>
-
-    <Button
-        android:id="@+id/btn_timpicker"
+        android:id="@+id/textView_currentSnoozeTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Time Picker"/>
+        android:text="Die Snooze Zeit beträgt zur Zeit ... Minuten"/>
 
-    <Button
-        android:id="@+id/btn_cancel"
+    <EditText
+        android:id="@+id/editText_snoozeTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"/>
+        android:hint="Edit Your Snooze Time"/>
 
     <Button
-        android:id="@+id/btn_opnPref"
+        android:id="@+id/btn_changeSnoozeTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Preference Activity"/>
+        android:text="Change Snooze Time"/>
 
 </LinearLayout>

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public static TextView textView;
     private NotificationHelper notificationHelper;
+    Button btn_opnPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 cancelAlarm();
             }
         });
+
+
+        btn_opnPrefs = findViewById(R.id.btn_opnPref);
+        btn_opnPrefs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), PreferenceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){

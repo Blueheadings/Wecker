@@ -16,9 +16,20 @@ public class SnoozeActivity extends AppCompatActivity {
     
     public Button snooze;
     public Button cancel;
+    public static int mySnoozeVariable = 1;
+    public static Calendar c;
 
-    public int mySnoozeVariable = 5;
-    
+    public static int getMySnoozeVariable() {
+        return mySnoozeVariable;
+    }
+
+    public static void setMySnoozeVariable(int mySnoozeVariable) {
+        SnoozeActivity.mySnoozeVariable = mySnoozeVariable;
+    }
+
+    public static Calendar getC() {
+        return c;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +49,28 @@ public class SnoozeActivity extends AppCompatActivity {
         snooze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                snoozeAlarm();
+                snoozeAlarm(v);
             }
         });
     }
 
-    private void snoozeAlarm() {
+    private void snoozeAlarm(View v) {
         Calendar calendar = Calendar.getInstance();
         int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
-        Calendar c = Calendar.getInstance();
+        c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute + mySnoozeVariable);
         c.set(Calendar.SECOND, 0);
 
         MainActivity.updateTimeText(c);
-//        MainActivity.startAlarm(c);
+        AlertReceiver.r.stop();
+
+        Intent intent = new Intent(this, SnoozeReceiver.class);
+        sendBroadcast(intent);
+
+        finish();
     }
 
     private void cancelAlarm() {
@@ -66,5 +82,6 @@ public class SnoozeActivity extends AppCompatActivity {
 
         alarmManager.cancel(pendingIntent);
         MainActivity.textView.setText("Alarm canceled");
+        finish();
     }
 }
