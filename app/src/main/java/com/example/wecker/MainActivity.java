@@ -23,6 +23,9 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 /**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ *
  * Quelle: https://www.youtube.com/watch?v=yrpimdBRk5Q
  */
 

@@ -9,6 +9,11 @@ import java.util.Calendar;
 
 import androidx.core.app.NotificationCompat;
 
+/**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ */
+
 public class SnoozeReceiver extends BroadcastReceiver {
 
     String nextAlarm;

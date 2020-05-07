@@ -8,6 +8,11 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Build;
 
+/**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ */
+
 
 public class AlertReceiver extends BroadcastReceiver {
 

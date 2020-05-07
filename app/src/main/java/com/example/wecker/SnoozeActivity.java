@@ -12,6 +12,11 @@ import android.widget.Button;
 
 import java.util.Calendar;
 
+/**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ */
+
 public class SnoozeActivity extends AppCompatActivity {
     
     public Button snooze;

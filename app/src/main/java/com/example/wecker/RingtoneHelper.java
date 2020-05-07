@@ -4,6 +4,11 @@ import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 
+/**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ */
+
 public class RingtoneHelper {
 
     Context context;

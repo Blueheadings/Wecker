@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+/**
+ * @author Willi Hollatz
+ * SMSB4, 17952
+ */
+
 
 public class PreferenceActivity extends AppCompatActivity {
 
