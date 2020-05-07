@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -108,10 +109,15 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-        alarmManager.cancel(pendingIntent);
-        textView.setText("Alarm canceled");
+        try {
+            alarmManager.cancel(pendingIntent);
+            textView.setText("Alarm canceled");
 
-        AlertReceiver.r.stop();
+            AlertReceiver.r.stop();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            Toast.makeText(this, "No Alarm was set", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

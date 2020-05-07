@@ -18,18 +18,24 @@
         android:id="@+id/btn_timpicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Time Picker"/>
+        android:text="Open Time Picker"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"/>
+        android:text="Cancel Alarm"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/btn_opnPref"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Preference Activity"/>
+        android:text="Open Preference Activity"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"/>
 
 </LinearLayout>
