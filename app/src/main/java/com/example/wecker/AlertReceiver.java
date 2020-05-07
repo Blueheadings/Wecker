@@ -8,7 +8,6 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Build;
 
-import androidx.core.app.NotificationCompat;
 
 public class AlertReceiver extends BroadcastReceiver {
 

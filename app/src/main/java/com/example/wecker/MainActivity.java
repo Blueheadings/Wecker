@@ -93,13 +93,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
-/*
         // Wecker der in der Vergangengheit liegt (nächster Tag) wird sonst direkt abgespielt
         if(c.before(Calendar.getInstance())){
             c.add(Calendar.DATE, 1);
         }
 
- */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
         }
@@ -116,14 +114,4 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         AlertReceiver.r.stop();
     }
 
-
-    public void sendOnChannel1(String title, String message){
-        NotificationCompat.Builder nb = notificationHelper.getChannel1Notification(title, message);
-        notificationHelper.getManager().notify(1, nb.build());
-    }
-
-    public void sendOnChannel2(String title, String message){
-        NotificationCompat.Builder nb = notificationHelper.getChannel2Notification(title, message);
-        notificationHelper.getManager().notify(2, nb.build());
-    }
 }
